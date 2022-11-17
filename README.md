@@ -1,4 +1,8 @@
-# README TUGAS 7
+[README Tugas 7](https://github.com/elsagiana/pbp-flutter-lab#tugas-7)
+
+[README Tugas 8](https://github.com/elsagiana/pbp-flutter-lab#tugas-8)
+
+# TUGAS 7
 
 ## Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget dan jelaskan perbedaan dari keduanya.
 
@@ -41,3 +45,53 @@ Fungsi dari `setState()` adalah menginformasikan framework bahwa terjadi perubah
 7. Mengatur padding button.
 8. Menambahkan kondisional untuk mengatur visibilitas button decrement, yaitu button akan hilang jika variabel `_counter` bernilai 0.
 
+
+# TUGAS 8
+
+## Jelaskan perbedaan `Navigator.push` dan `Navigator.pushReplacement`.
+
+`Navigator.push` digunakan untuk menambahkan *page* baru ke dalam *stack*. *Page* baru tersebut akan berada di atas page yang sudah ada. Sedangkan `Navigator.pushReplacement` digunakan untuk menambahkan *page* baru ke dalam *stack* dengan mengganti *page* saat ini dengan *page* baru yang baru ditambahkan (di-*push*).
+
+## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+
+1. **Scaffold**: Untuk mengimplementasikan seluruh elemen visual desain
+2. **AppBar**: Untuk membuat bar yang berisi judul di heading aplikasi
+3. **Text**: Untuk menampilkan teks pada aplikasi
+4. **TextStyle**: Untuk melakukan styling pada text
+5. **Icon**: Untuk menampilkan icon
+6. **Center**: Untuk alignment center
+7. **Column**: Untuk layouting secara vertikal
+8. **Row**: Untuk layouting secara horizontal
+9. **Container**: Untuk menyimpan widget lain dan mengatur padding
+10. **Padding**: Untuk mengatur child widgetnya agar ada dalam ukuran padding
+11. **Form**: Untuk menyimpan semua widget form field
+12. **SingleChildScrollView**: Untuk membuat widget dapat di-scroll agar konten bisa terlihat sesuai ukuran screen
+13. **TextFormField**: Untuk meminta input dari user dalam bentuk teks
+14. **Expanded**: Untuk membuat widget child memperlebar ukurannya agar sesuai dengan main axis
+15. **Drawer**: Untuk navigasi page dalam aplikasi
+16. **Card**: Untuk menampilkan informasi dalam bentuk card
+17. **TextButton**: Untuk membuat simple flat button
+ 
+
+## Sebutkan jenis-jenis event yang ada pada Flutter (contoh: `onPressed`).
+
+1. `onPressed`
+2. `onChanged`
+3. `onSaved`
+4. `onTap`
+
+## Jelaskan bagaimana cara kerja `Navigator` dalam "mengganti" halaman dari aplikasi Flutter.
+
+`Navigator` bekerja dengan menggunakan prinsip *stack*. Untuk mengganti halaman ke halaman selanjutnya, method `Navigator.push()` digunakan. Sedangkan, method `Navigator.pop()` digunakan untuk mengganti ke halaman sebelumnya. Halaman pertama (*home page*) akan berada dalam *bottom of stack*. Setiap method `Navigator.push()` dipanggil, halaman baru akan dimasukkan ke dalam stack yaitu di atas halaman yang sudah ada.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+
+1. Membuat file baru bernama `form.dart` untuk halaman form, `data.dart` untuk halaman tampilan data yang dimasukkan melalui form, dan `drawer.dart` untuk membuat drawer menu.
+2. Pada setiap file akan ditambahkan import tiga file yang lain.
+3. File `drawer.dart` berisi kode untuk drawer yang berfungsi untuk routing tiga halaman yang ada pada aplikasi (halaman counter, halaman form, dan halaman *data budget*)
+4. Drawer ditambahkan pada file `main.dart`, `form.dart`, dan `data.dart`.
+5. Membuat form pada halaman Form Budget (file `form.dart`) untuk meminta input judul budget, nominal budget, dan dropdown tipe budget.
+6. Melakukan validasi input dan membuat batasan untuk input nominal agar angka saja.
+7. Menambahkan button pada halaman form.
+8. Object Budget akan terbuat saat button pada halaman form diklik dan menyimpannya pada list.
+9. Menampilkan data yang telah diinput dari form pada halaman Data Budget (file `data.dart`) dengan memanfaatkan Object dan List.
