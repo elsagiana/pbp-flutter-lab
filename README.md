@@ -2,6 +2,8 @@
 
 [README Tugas 8](https://github.com/elsagiana/pbp-flutter-lab#tugas-8)
 
+[README Tugas 9](https://github.com/elsagiana/pbp-flutter-lab#tugas-9)
+
 # TUGAS 7
 
 ## Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget dan jelaskan perbedaan dari keduanya.
@@ -95,3 +97,59 @@ Fungsi dari `setState()` adalah menginformasikan framework bahwa terjadi perubah
 7. Menambahkan button pada halaman form.
 8. Object Budget akan terbuat saat button pada halaman form diklik dan menyimpannya pada list.
 9. Menampilkan data yang telah diinput dari form pada halaman Data Budget (file `data.dart`) dengan memanfaatkan Object dan List.
+
+
+# TUGAS 9
+
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+Bisa, dengan menggunakan library `JSON Serializeable`. 
+Penggunaan JSON serializeable lebih baik ketika proyek yang dikerjakan berskala besar karena dapat mengurangi waktu yang dibutuhkan dan kemungkinan error.
+Pembuatan model sebelum pengambilan data lebih baik digunakan saat JSON model pada proyek tidak terlalu banyak.
+
+## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+
+1. **Scaffold**: Untuk mengimplementasikan seluruh elemen visual desain
+2. **AppBar**: Untuk membuat bar yang berisi judul di heading aplikasi
+3. **Text**: Untuk menampilkan teks pada aplikasi
+4. **TextStyle**: Untuk melakukan styling pada text
+5. **Drawer**: Untuk navigasi page dalam aplikasi
+6. **Center**: Untuk alignment center
+7. **Column**: Untuk layouting secara vertikal
+8. **Row**: Untuk layouting secara horizontal
+9. **Container**: Untuk menyimpan widget lain dan mengatur padding
+10. **Padding**: Untuk mengatur child widgetnya agar ada dalam ukuran padding
+11. **SingleChildScrollView**: Untuk membuat widget dapat di-scroll agar konten bisa terlihat sesuai ukuran screen
+12. **TextButton**: Untuk membuat simple flat button
+13. **FutureBuilder**: Untuk memanggil future function yaitu `fetchMyWatchList()` dan saat result terbentuk maka builder function akan build widget-nya
+14. **SizedBox**: Untuk membuat box dengan ukuran tertentu
+15. **InkWell**: Untuk membuat box judul dapat ditekan
+16. **ListView**: Untuk menampilkan item dalam bentuk list
+
+## Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+
+Pada proyek, perlu ditambahkan dependency `http` agar dapat bertukar data melalui HTTP request. 
+Kemudian, http request akan dibuat ke web service dengan menggunakan dependency `http`. 
+Terdapat fungsi `fetch()` untuk mengambil data dari URL yang diinginkan. 
+Lalu, objek yang didapat dikonversikan ke dalam model yang dibuat pada proyek.
+Pada file di folder model terdapat kode-kode dengan method toJson dan fromJson. Hal ini karena hasil dari request suatu web service dengan method GET adalah JSON.
+Oleh karena itu, fromJson digunakan untuk mengonversi data agar Flutter mengenali JSON tersebut sebagai objek class pada proyek.
+Selain itu, method toJson digunakan untuk melakukan pengiriman data ke web service.
+Hasil konversi model akan ditampilkan dengan FutureBuilder.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+
+1. Melakukan refactor file dengan membuat dua folder baru, yaitu `model` dan `page`. Lalu, memindahkan seluruh file kecuali `main.dart` ke dalam folder page.
+2. Pada folder `model` membuat file baru bernama `mywatchlist.dart`
+3. Menyalin data JSON Tugas 3 dari `http://django-assignment-elsa.herokuapp.com/mywatchlist/json/` kemudian menempelkan pada situs web Quicktype untuk membuat model yang sesuai.
+4. Menyalin model hasil dari Quicktype ke dalam file `mywatchlist.dart`
+5. Menambahkan dependensi http pada proyek dengan melakukan `flutter pub add http`.
+6. Menambahkan kode `<uses-permission android:name="android.permission.INTERNET" />` pada file `android/app/src/main/AndroidManifest.xml`.
+7. Pada folder `page` membuat file `mywatchlistpage.dart` dan `mywatchlistdetail.dart`
+8. Pada file `mywatchlistpage.dart` menambahkan import yang dibutuhkan.
+9. Pada file `mywatchlistpage.dart` akan dilakukan pengambilan data dari `http://django-assignment-elsa.herokuapp.com/mywatchlist/json/` dengan menggunakan `http.get`. Lalu, akan diolah dan dimasukkan ke dalam `listMyWatchList`
+10. Menampilkan judul dari setiap film.
+11. Menambahkan detail page untuk masing-masing film dan melakukan navigasi ke halaman detail jika title ditekan.
+12. Pada file `mywatchlistdetail.dart`, menambahkan variabel `myWatchList` pada `class MyWatchListDetail` dan `_myWatchList` pada `class _MyWatchListDetailState`. 
+13. Menampilkan detail tiap film, berupa judul, release date, rating, status ditonton, dan review.
+14. Menambahkan tombol Back untuk kembali ke halaman list judul film.
